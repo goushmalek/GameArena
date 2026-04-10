@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Arena - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="settings-btn" id="settingsBtn"><span class="settings-icon">⚙️</span></button>
+    
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header"><h2>⚙️ Settings</h2><button class="close-btn" id="closeSettings">✕</button></div>
+        <div class="settings-content">
+            <div class="settings-section">
+                <h3>👤 User Profile</h3>
+                <p style="color:var(--neon-cyan);margin-bottom:1rem;">Current Username: <strong id="displayUsername">Loading...</strong></p>
+                <button class="reset-username-btn" id="resetUsernameBtn">🔄 Change Username</button>
+            </div>
+            
+            <div class="settings-section">
+                <h3>🎵 Background Music</h3>
+                <div class="music-controls">
+                    <button class="music-btn" data-track="1">🎵 Track 1: Arcade Beat</button>
+                    <button class="music-btn" data-track="2">🎵 Track 2: Retro Wave</button>
+                    <button class="music-btn" data-track="3">🎵 Track 3: Cyber Pulse</button>
+                    <button class="music-btn stop-music" id="stopMusic">⏹️ Stop Music</button>
+                </div>
+                <div class="volume-control">
+                    <label for="volumeSlider">Volume:</label>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                    <span id="volumeValue">50%</span>
+                </div>
+                <div class="custom-music-section">
+                    <h4>🎧 Upload Your Music</h4>
+                    <p class="upload-hint">Play your own music or playlist!</p>
+                    <input type="file" id="customMusicUpload" accept="audio/*" multiple style="display:none;">
+                    <button class="upload-music-btn" id="uploadMusicBtn">📂 Choose Music Files</button>
+                    <div class="custom-playlist" id="customPlaylist"></div>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>🎨 Theme</h3>
+                <div class="theme-toggle">
+                    <button class="theme-btn active" data-theme="dark">🌙 Dark Mode</button>
+                    <button class="theme-btn" data-theme="light">☀️ Light Mode</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>🔗 Social Links</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com/Osmmomo" target="_blank" class="social-link">
+                        <span>𝕏</span> Twitter
+                    </a>
+                    <a href="https://github.com/goushmalek/GameArena" target="_blank" class="social-link">
+                        <span>⚙️</span> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>💬 Request a Game</h3>
+                <form id="gameRequestForm" class="request-form">
+                    <input type="text" id="userName" name="name" placeholder="Your Name" required>
+                    <input type="email" id="userEmail" name="email" placeholder="Your Email" required>
+                    <textarea id="gameMessage" name="message" placeholder="What game would you like to see?" required rows="3"></textarea>
+                    <button type="submit" class="submit-btn">📤 Send Request</button>
+                </form>
+                <div id="formSuccessMessage" class="form-success-msg" style="display:none;">
+                    ✅ Thank you! Your game request has been sent successfully!
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>📊 Statistics</h3>
+                <a href="statistics.html" class="statistics-link"><span>📈</span> View Statistics</a>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">🎮 <span class="gradient-text">GAME ARENA</span></div>
+            <p class="tagline">Choose Your Game and Start Playing!</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-wrapper">
+            <div class="main-content">
+                <section class="category-section">
+                    <h2 class="category-title">🎯 Classic Games</h2>
+                    <div class="games-grid-clean">
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">❌⭕</div>
+                            <h3>TIC-TAC-TOE</h3>
+                            <p>Classic 3x3 grid game. Get three in a row to win! Challenge a friend in this timeless strategy game.</p>
+                            <div class="tags"><span>2 Players</span><span>Quick Game</span><span>Strategy</span></div>
+                            <a href="tic-tac-toe.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                        
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">✊✋✌️</div>
+                            <h3>ROCK-PAPER-SCISSORS</h3>
+                            <p>Test your luck against the computer! Rock crushes scissors, scissors cuts paper, paper covers rock.</p>
+                            <div class="tags"><span>vs Computer</span><span>Instant Fun</span><span>Luck</span></div>
+                            <a href="rock-paper-scissors.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                        
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">🟦</div>
+                            <h3>TETRIS</h3>
+                            <p>Stack blocks and clear lines! Beat the high score and compete with friends on the leaderboard!</p>
+                            <div class="tags"><span>Arcade</span><span>Addictive</span><span>Leaderboard</span></div>
+                            <a href="tetris.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                        
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">🐍</div>
+                            <h3>SNAKE</h3>
+                            <p>Classic snake game! Eat food to grow longer. Don't hit the walls or yourself!</p>
+                            <div class="tags"><span>Retro</span><span>Skill</span><span>Arcade</span></div>
+                            <a href="snake.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                        
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">🧠</div>
+                            <h3>MEMORY MATCH</h3>
+                            <p>Find matching pairs of cards! Test your memory and beat your best time!</p>
+                            <div class="tags"><span>Puzzle</span><span>Memory</span><span>Brain Game</span></div>
+                            <a href="memory.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="category-section">
+                    <h2 class="category-title">🎲 Try Your Luck</h2>
+                    <div class="games-grid-clean">
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">💣</div>
+                            <h3>MINES</h3>
+                            <p>Find diamonds, avoid mines! Start with 100 points. Entry cost: 10 points per round. Strategic risk-reward gameplay!</p>
+                            <div class="tags"><span>Strategy</span><span>Thrilling</span><span>Points Based</span></div>
+                            <a href="mines.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                        
+                        <div class="game-card-clean">
+                            <div class="game-icon-large">🎰</div>
+                            <h3>SPIN & WIN</h3>
+                            <p>Spin the reels and match symbols! Start with 100 points. Spin costs 10 points. Fun and colorful!</p>
+                            <div class="tags"><span>Fun</span><span>Colorful</span><span>Exciting</span></div>
+                            <a href="slots.html" class="play-btn-clean">PLAY NOW →</a>
+                        </div>
+                        
+                        <div class="game-card-clean coming-soon-card">
+                            <div class="game-icon-large">🚀</div>
+                            <h3>MORE GAMES</h3>
+                            <p>We're working hard to bring you more amazing games! Stay tuned for exciting new adventures!</p>
+                            <div class="coming-soon-badge">COMING SOON</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- LEADERBOARD ON THE RIGHT SIDE -->
+            <aside class="sidebar-leaderboard-right">
+                <div class="lb-card">
+                    <h2>🏆 TOP PLAYERS</h2>
+                    <div class="lb-tabs-scroll">
+                        <div class="lb-filter-tabs-horizontal">
+                            <button class="lb-tab active" data-game="tetris">🟦 Tetris</button>
+                            <button class="lb-tab" data-game="snake">🐍 Snake</button>
+                            <button class="lb-tab" data-game="memorymatch">🧩 Memory</button>
+                            <button class="lb-tab" data-game="mines">💣 Mines</button>
+                            <button class="lb-tab" data-game="slots">🎰 Slots</button>
+                            <button class="lb-tab" data-game="tictactoe">❌⭕ TicTacToe</button>
+                            <button class="lb-tab" data-game="rps">✊ RPS</button>
+                        </div>
+                    </div>
+                    <div class="lb-sort-toggle">
+                        <button class="sort-btn active" data-sort="score">📊 Score</button>
+                        <button class="sort-btn" data-sort="time">⏱️ Time</button>
+                    </div>
+                    <div class="lb-content-scroll" id="homeLeaderboard">
+                        <p class="lb-empty">Play games to appear here!</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Game Arena  </p>
+    </footer>
+
+    <script src="settings.js"></script>
+    <script src="admin.js"></script>
+    <script>
+        // Reset username button with UI modal
+        document.getElementById('resetUsernameBtn').addEventListener('click', () => {
+            showConfirmModal();
+        });
+        
+        // Show custom confirmation modal
+        function showConfirmModal() {
+            const modal = document.createElement('div');
+            modal.className = 'confirm-modal';
+            modal.innerHTML = `
+                <div class="confirm-modal-content">
+                    <h2>⚠️ Change Username?</h2>
+                    <p>Are you sure you want to change your username?</p>
+                    <p class="warning-text">This will reset your identity on the leaderboard.</p>
+                    <div class="confirm-buttons">
+                        <button class="confirm-btn confirm-yes" id="confirmYes">✓ Yes, Change</button>
+                        <button class="confirm-btn confirm-no" id="confirmNo">✕ Cancel</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            document.getElementById('confirmYes').addEventListener('click', () => {
+                localStorage.removeItem('username');
+                modal.remove();
+                location.reload();
+            });
+            
+            document.getElementById('confirmNo').addEventListener('click', () => {
+                modal.remove();
+            });
+        }
+        
+        // Username Modal
+        function showUsernameModal(){
+            const modal=document.createElement('div');
+            modal.className='username-modal';
+            modal.innerHTML=`<div class="username-modal-content"><h2>🎮 Welcome to Game Arena!</h2><p>Enter your username to join the leaderboard</p><div class="username-input-group"><input type="text" id="usernameInput" placeholder="Your Username" maxlength="20" autocomplete="off"></div><button class="username-modal-btn" id="submitUsername">START PLAYING</button></div>`;
+            document.body.appendChild(modal);
+            const input=document.getElementById('usernameInput');
+            const btn=document.getElementById('submitUsername');
+            input.focus();
+            function submitName(){
+                const username=input.value.trim();
+                if(username){
+                    localStorage.setItem('username',username);
+                    modal.remove();
+                    loadLeaderboard();
+                    // Update settings display
+                    const usernameDisplay = document.getElementById('displayUsername');
+                    if (usernameDisplay) usernameDisplay.textContent = username;
+                }
+            }
+            btn.addEventListener('click',submitName);
+            input.addEventListener('keypress',e=>{if(e.key==='Enter')submitName()});
+        }
+        
+        // Load Leaderboard with Filters
+        let currentGame = 'tetris';
+        let currentSort = 'score';
+        
+        function loadLeaderboard(){
+            const leaderboard = JSON.parse(localStorage.getItem(`${currentGame}_leaderboard`) || '[]');
+            const container = document.getElementById('homeLeaderboard');
+            
+            if(leaderboard.length > 0){
+                let sorted = [...leaderboard];
+                
+                // For RPS and TicTacToe, sort by games played or time
+                if(currentGame === 'rps' || currentGame === 'tictactoe'){
+                    if(currentSort === 'score'){
+                        // Sort by games played (score field represents games for these)
+                        sorted.sort((a,b) => (b.score||0) - (a.score||0));
+                    } else {
+                        sorted.sort((a,b) => (b.time||0) - (a.time||0));
+                    }
+                } else {
+                    // Normal sorting for other games
+                    if(currentSort === 'score'){
+                        sorted.sort((a,b) => (b.score||0) - (a.score||0));
+                    } else {
+                        sorted.sort((a,b) => (b.time||0) - (a.time||0));
+                    }
+                }
+                
+                container.innerHTML = sorted.slice(0,10).map((entry,i) => {
+                    const mins = Math.floor((entry.time||0)/60);
+                    const secs = (entry.time||0)%60;
+                    const timeStr = `${mins}:${secs.toString().padStart(2,'0')}`;
+                    
+                    // Display format for RPS and TicTacToe
+                    if(currentGame === 'rps' || currentGame === 'tictactoe'){
+                        return `<div class="lb-entry ${i<3?'top3':''}">
+                            <span class="lb-rank">#${i+1}</span>
+                            <div class="lb-info">
+                                <span class="lb-name">${entry.name}</span>
+                                <span class="lb-time">⏱️ ${timeStr}</span>
+                            </div>
+                            <span class="lb-score">🎮 ${entry.score||0}</span>
+                        </div>`;
+                    } else {
+                        // Normal display for other games
+                        return `<div class="lb-entry ${i<3?'top3':''}">
+                            <span class="lb-rank">#${i+1}</span>
+                            <div class="lb-info">
+                                <span class="lb-name">${entry.name}</span>
+                                <span class="lb-time">${timeStr}</span>
+                            </div>
+                            <span class="lb-score">${entry.score||0}</span>
+                        </div>`;
+                    }
+                }).join('');
+            } else {
+                container.innerHTML = '<p class="lb-empty">No scores yet. Be the first!</p>';
+            }
+        }
+        
+        // Tab and Sort Switching
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.lb-tab');
+            const sortBtns = document.querySelectorAll('.sort-btn');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentGame = tab.dataset.game;
+                    
+                    // Update sort button labels
+                    const scoreSortBtn = document.querySelector('.sort-btn[data-sort="score"]');
+                    if(currentGame === 'rps' || currentGame === 'tictactoe'){
+                        scoreSortBtn.innerHTML = '🎮 Games';
+                    } else {
+                        scoreSortBtn.innerHTML = '📊 Score';
+                    }
+                    
+                    loadLeaderboard();
+                });
+            });
+            
+            sortBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sortBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentSort = btn.dataset.sort;
+                    loadLeaderboard();
+                });
+            });
+            
+            const usernameDisplay = document.getElementById('displayUsername');
+            if (usernameDisplay) {
+                const currentUsername = localStorage.getItem('username') || 'Not Set';
+                usernameDisplay.textContent = currentUsername;
+            }
+        });
+        
+        window.addEventListener('load',()=>{
+            let username=localStorage.getItem('username');
+            if(!username){showUsernameModal()}else{loadLeaderboard()}
+            
+            // Check if redirected back from FormSubmit
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('submitted') === 'true') {
+                const successMsg = document.getElementById('formSuccessMessage');
+                const form = document.getElementById('gameRequestForm');
+                if (successMsg && form) {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    setTimeout(() => {
+                        form.style.display = 'block';
+                        successMsg.style.display = 'none';
+                        form.reset();
+                    }, 5000);
+                }
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
+</body>
+</html>

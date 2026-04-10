@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines - Game Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mines.css">
+</head>
+<body data-page="game">
+    <button class="settings-btn" id="settingsBtn"><span class="settings-icon">⚙️</span></button>
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header"><h2>⚙️ Settings</h2><button class="close-btn" id="closeSettings">✕</button></div>
+        <div class="settings-content">
+            <div class="settings-section"><h3>🎵 Background Music</h3><div class="music-controls"><button class="music-btn" data-track="1">🎵 Track 1</button><button class="music-btn" data-track="2">🎵 Track 2</button><button class="music-btn" data-track="3">🎵 Track 3</button><button class="music-btn stop-music" id="stopMusic">⏹️ Stop</button></div><div class="volume-control"><label for="volumeSlider">Volume:</label><input type="range" id="volumeSlider" min="0" max="100" value="50"><span id="volumeValue">50%</span></div><div class="custom-music-section"><h4>🎧 Upload Music</h4><input type="file" id="customMusicUpload" accept="audio/*" multiple style="display:none;"><button class="upload-music-btn" id="uploadMusicBtn">📂 Choose Files</button><div class="custom-playlist" id="customPlaylist"></div></div></div>
+            <div class="settings-section"><h3>🎨 Theme</h3><div class="theme-toggle"><button class="theme-btn active" data-theme="dark">🌙 Dark</button><button class="theme-btn" data-theme="light">☀️ Light</button></div></div>
+        </div>
+    </div>
+    <header><a href="index.html" class="back-button">← Back</a><h1>💣 MINES</h1></header>
+    <main class="game-page-container"><div class="game-card single-game mines-game">
+        <div class="points-display"><div class="total-points"><span>Total Points</span><span id="totalPoints">100</span></div><div class="round-points"><span>Current Score</span><span id="roundPoints">0</span></div></div>
+        <div class="game-controls">
+            <label for="minesCount">Difficulty (Mines):</label>
+            <select id="minesCount"><option value="3">Easy (3 Mines)</option><option value="5" selected>Medium (5 Mines)</option><option value="10">Hard (10 Mines)</option><option value="15">Expert (15 Mines)</option></select>
+            <button id="startGame" class="start-btn">START GAME (10 Points)</button>
+        </div>
+        <div class="game-status" id="gameStatus">Start game to play! Costs 10 points per round.</div>
+        <div class="mines-grid" id="minesGrid"></div>
+        <button id="collectReward" class="collect-btn" style="display:none;">✅ COLLECT REWARD</button>
+        <div class="stats-grid"><div class="stat-card"><span>💎</span><span id="diamondsFound">0</span></div><div class="stat-card"><span>🏆</span><span id="highestScore">100</span></div><div class="stat-card"><span>🎮</span><span id="roundsPlayed">0</span></div></div>
+        <button id="newRound" class="reset-btn" style="display:none;">NEW ROUND</button>
+        
+        <div class="mines-history-section">
+            <h3>📜 Recent Games</h3>
+            <div id="minesHistory" class="mines-history"></div>
+        </div>
+    </div></main>
+    <script src="settings.js"></script>
+    <script src="mines.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

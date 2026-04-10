@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" style="background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%) !important; min-height: 100vh;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Game Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="statistics.css">
+    <style>
+        /* Inline force dark - highest priority */
+        html, body {
+            background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%) !important;
+            background-attachment: fixed !important;
+            min-height: 100vh !important;
+            background-color: #1a0033 !important;
+        }
+    </style>
+</head>
+<body data-page="statistics" style="background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%) !important; background-attachment: fixed !important; min-height: 100vh !important; background-color: #1a0033 !important;">
+    <header>
+        <a href="index.html" class="back-button">← Back to Home</a>
+        <h1>📊 STATISTICS</h1>
+    </header>
+    <main class="admin-container">
+        <div class="admin-card">
+            <h2>🎮 Game Analytics</h2>
+            <div class="stats-overview">
+                <div class="stat-box">
+                    <span class="stat-icon">👥</span>
+                    <span class="stat-label">Total Sessions</span>
+                    <span class="stat-value" id="totalSessions">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-icon">⏱️</span>
+                    <span class="stat-label">Total Time</span>
+                    <span class="stat-value" id="totalTime">0m</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-icon">🎯</span>
+                    <span class="stat-label">Most Popular</span>
+                    <span class="stat-value" id="mostPopular">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>📈 Page Activity</h2>
+            <div class="activity-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Page</th>
+                            <th>Visits</th>
+                            <th>Time Spent</th>
+                            <th>Avg Time/Visit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>🕐 Recent Activity</h2>
+            <div class="recent-activity" id="recentActivity"></div>
+        </div>
+
+        <button class="clear-btn" id="clearData">🗑️ Clear All Data</button>
+    </main>
+
+    <footer>
+        <p>© 2026 Game Arena | Made with ❤️ by Mohammad Gouse</p>
+    </footer>
+
+    <script>
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+.snake-game{max-width:700px!important}.game-stats{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}.stat{display:flex;flex-direction:column;align-items:center;padding:1rem 1.5rem;background:rgba(0,0,0,.3);border:2px solid var(--electric-blue);border-radius:10px;min-width:100px}.stat span:first-child{font-size:.8rem;color:var(--neon-yellow);margin-bottom:.5rem}.stat span:last-child{font-size:1.8rem;color:var(--neon-cyan);font-weight:900}#snakeCanvas{border:3px solid var(--neon-cyan);border-radius:10px;display:block;margin:0 auto 1.5rem;box-shadow:0 0 20px rgba(0,255,255,.5);background:#000}.game-controls{display:flex;gap:1rem;justify-content:center;margin-bottom:1.5rem}.control-btn{padding:1rem 2.5rem;border:none;border-radius:10px;font-size:1.1rem;font-weight:900;font-family:Orbitron,sans-serif;cursor:pointer;transition:all .3s ease}.start-btn{background:linear-gradient(135deg,#0f0,#0c0);color:#000}.pause-btn{background:linear-gradient(135deg,#ff0,#fa0);color:#000}.control-btn:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(0,255,0,.5)}.instructions{background:rgba(0,0,0,.3);border:2px solid var(--electric-blue);border-radius:10px;padding:1.5rem;text-align:center}.instructions h3{color:var(--neon-yellow);margin-bottom:1rem}.control-keys{display:flex;flex-direction:column;align-items:center;gap:1rem}.key-group{display:flex;flex-direction:column;align-items:center;gap:.5rem}.key-row{display:flex;gap:.5rem}.key{background:rgba(77,77,255,.3);border:2px solid var(--electric-blue);padding:.8rem 1.2rem;border-radius:8px;color:var(--neon-cyan);font-weight:700;min-width:50px;text-align:center}.control-keys p{color:var(--neon-cyan);margin-top:.5rem;font-size:.9rem}
+
+/* Game Over Modal */
+.game-over-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.game-over-content {
+    background: linear-gradient(145deg, rgba(20, 10, 40, 0.98), rgba(40, 20, 60, 0.98));
+    border: 3px solid var(--neon-cyan);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
+    animation: slideIn 0.4s ease;
+    min-width: 350px;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px) scale(0.9); }
+    to { transform: translateY(0) scale(1); }
+}
+
+.game-over-content h2 {
+    color: var(--neon-pink);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px var(--neon-pink);
+}
+
+.game-over-stats {
+    margin: 1.5rem 0;
+}
+
+.game-over-stats p {
+    color: var(--neon-cyan);
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.score-value {
+    color: var(--neon-yellow);
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--neon-yellow);
+}
+
+.play-again-btn {
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 900;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 0, 144, 0.5);
+    margin-top: 1rem;
+}
+
+.play-again-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 0, 144, 0.8);
+}
+
+/* Snake History Section */
+.snake-history-section{margin-top:2rem;background:rgba(0,0,0,.3);border:2px solid var(--electric-blue);border-radius:12px;padding:1.5rem}.snake-history-section h3{color:var(--neon-yellow);text-align:center;margin-bottom:1rem;font-size:1.1rem}.snake-history{display:flex;flex-direction:column;gap:.5rem;max-height:400px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--neon-cyan) rgba(0,0,0,.3)}.snake-history::-webkit-scrollbar{width:6px}.snake-history::-webkit-scrollbar-track{background:rgba(0,0,0,.3);border-radius:10px}.snake-history::-webkit-scrollbar-thumb{background:var(--neon-cyan);border-radius:10px}.history-item{display:flex;align-items:center;gap:1rem;padding:.8rem 1rem;background:rgba(77,77,255,.2);border:2px solid var(--electric-blue);border-radius:8px;font-family:Orbitron,sans-serif;transition:all .3s ease}.history-item:hover{background:rgba(0,255,255,.1);border-color:var(--neon-cyan)}.history-icon{font-size:1.5rem}.history-details{flex:1;display:flex;flex-direction:column;gap:.3rem}.history-time,.history-moves{font-size:.8rem;color:var(--neon-cyan)}.history-score{font-size:1.2rem;font-weight:900;color:#0f0;min-width:60px;text-align:right}.no-history{text-align:center;color:var(--neon-cyan);opacity:.7;padding:2rem;font-size:.9rem}
+
+/* SNAKE TOUCH CONTROLS - SIMPLE ROW LAYOUT */
+.snake-touch-controls {
+    width: 100%;
+    max-width: 450px;
+    margin: 1.5rem auto 1rem;
+    background: rgba(20, 10, 40, 0.95);
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 3px solid var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.controls-title {
+    text-align: center;
+    color: var(--neon-yellow);
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--neon-yellow);
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Simple row of arrow buttons */
+.snake-arrows-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.snake-arrow-btn {
+    width: 85px;
+    height: 85px;
+    background: linear-gradient(145deg, rgba(0, 100, 255, 0.6), rgba(0, 150, 255, 0.8));
+    border: 3px solid var(--electric-blue);
+    border-radius: 15px;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 150, 255, 0.4);
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.snake-arrow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 150, 255, 0.6);
+}
+
+.snake-arrow-btn:active {
+    background: linear-gradient(145deg, rgba(0, 255, 255, 0.8), rgba(0, 200, 255, 1));
+    transform: scale(0.92);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    border-color: var(--neon-cyan);
+}
+
+.arrow-icon {
+    font-weight: 900;
+    line-height: 1;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .snake-touch-controls {
+        margin: 1rem auto;
+        padding: 1.2rem;
+        max-width: 100%;
+    }
+    
+    .controls-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .snake-arrows-row {
+        gap: 0.5rem;
+    }
+    
+    .snake-arrow-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+    .snake-touch-controls {
+        max-width: 500px;
+        margin: 2rem auto 1.5rem;
+    }
+    
+    .snake-arrows-row {
+        gap: 1rem;
+    }
+    
+    .snake-arrow-btn {
+        width: 95px;
+        height: 95px;
+        font-size: 2.8rem;
+    }
+}
+
+/* Hide old instructions on mobile */
+@media (max-width: 768px) {
+    .instructions {
+        display: none;
+    }
+}

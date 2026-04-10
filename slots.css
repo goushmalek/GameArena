@@ -1,0 +1,242 @@
+.slots-game{max-width:700px!important}.points-display{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}.total-points,.spin-cost,.last-win{display:flex;flex-direction:column;align-items:center;padding:1rem 1.5rem;border-radius:12px;min-width:120px}.total-points{background:rgba(0,255,0,.1);border:3px solid #0f0;box-shadow:0 0 20px rgba(0,255,0,.3)}.spin-cost{background:rgba(255,165,0,.1);border:3px solid orange;box-shadow:0 0 20px rgba(255,165,0,.3)}.last-win{background:rgba(255,215,0,.1);border:3px solid gold;box-shadow:0 0 20px rgba(255,215,0,.3)}.total-points span:first-child,.spin-cost span:first-child,.last-win span:first-child{font-size:.8rem;color:var(--neon-yellow);margin-bottom:.5rem}.total-points span:last-child{font-size:2rem;color:#0f0;font-weight:900}.spin-cost span:last-child{font-size:2rem;color:orange;font-weight:900}.last-win span:last-child{font-size:2rem;color:gold;font-weight:900}.slot-machine{background:linear-gradient(145deg,rgba(20,10,40,.9),rgba(40,20,60,.95));border:4px solid var(--neon-cyan);border-radius:20px;padding:2rem;margin-bottom:2rem;box-shadow:0 0 40px rgba(0,255,255,.5)}.reels-container{display:flex;gap:1rem;justify-content:center}.reel{width:100px;height:120px;background:rgba(0,0,0,.5);border:3px solid var(--electric-blue);border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden;box-shadow:inset 0 0 20px rgba(0,0,0,.8)}.reel.spinning{animation:reelSpin .1s linear infinite}@keyframes reelSpin{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.spin-btn{width:100%;max-width:400px;margin:0 auto 2rem;display:block;padding:1.5rem 3rem;background:linear-gradient(135deg,#ff0080,#ff8c00,#40e0d0);background-size:200% 200%;animation:gradientShift 3s ease infinite;border:3px solid rgba(255,255,255,.3);border-radius:50px;color:#fff;font-size:1.3rem;font-weight:900;font-family:Orbitron,sans-serif;cursor:pointer;box-shadow:0 5px 30px rgba(255,0,128,.5);transition:all .3s ease;text-shadow:0 2px 10px rgba(0,0,0,.5)}.spin-btn:hover:not(:disabled){transform:translateY(-5px) scale(1.05);box-shadow:0 10px 40px rgba(255,0,128,.7)}.spin-btn:disabled{opacity:.5;cursor:not-allowed;animation:none}.rewards-table{background:rgba(0,0,0,.3);border:2px solid var(--electric-blue);border-radius:12px;padding:1.5rem;margin-bottom:2rem}.rewards-table h3{color:var(--neon-yellow);text-align:center;margin-bottom:1rem;font-size:1.1rem}.reward-row{display:flex;justify-content:space-between;padding:.8rem;margin:.5rem 0;background:rgba(77,77,255,.2);border:2px solid var(--electric-blue);border-radius:8px;color:var(--neon-cyan)}.reward-row span:first-child{font-size:1.2rem}.reward-row span:last-child{color:#0f0;font-weight:700}.game-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.stat-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1rem;background:rgba(0,0,0,.3);border:2px solid var(--electric-blue);border-radius:10px}.stat-item span:first-child{font-size:2rem}.stat-item span:nth-child(2){font-size:1.5rem;color:var(--neon-cyan);font-weight:900}.stat-item span:last-child{font-size:.7rem;color:var(--neon-yellow)}@media(max-width:640px){.reels-container{gap:.5rem}.reel{width:80px;height:100px;font-size:3rem}}
+
+/* Slots Custom Modal */
+.slots-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.slots-modal-content {
+    background: linear-gradient(145deg, rgba(40, 20, 60, 0.98), rgba(60, 30, 80, 0.98));
+    border: 3px solid var(--neon-pink);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255, 0, 144, 0.8);
+    animation: slideIn 0.4s ease;
+    min-width: 400px;
+}
+
+.slots-modal-content h2 {
+    color: var(--neon-yellow);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px var(--neon-yellow);
+}
+
+.slots-modal-content p {
+    color: var(--neon-cyan);
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.current-points {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 !important;
+}
+
+.current-points span {
+    color: var(--neon-yellow);
+    font-weight: 900;
+    font-size: 1.8rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.claim-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #0f0, #0c0);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 900;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.5);
+}
+
+.claim-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 255, 0, 0.8);
+}
+
+.close-modal-btn {
+    flex: 1;
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid #f00;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    background: rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Success Toast */
+.success-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #0f0, #0c0);
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.8);
+    z-index: 10001;
+    animation: slideInRight 0.5s ease, fadeOut 0.5s ease 2.5s;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+/* Rewards History Section */
+.rewards-history-section {
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--electric-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.rewards-history-section h3 {
+    color: var(--neon-yellow);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.rewards-history {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-cyan) rgba(0,0,0,0.3);
+}
+
+.rewards-history::-webkit-scrollbar {
+    width: 6px;
+}
+
+.rewards-history::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.rewards-history::-webkit-scrollbar-thumb {
+    background: var(--neon-cyan);
+    border-radius: 10px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.history-item.win {
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid #0f0;
+}
+
+.history-item.small-win {
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid gold;
+}
+
+.history-item.loss {
+    background: rgba(255, 0, 0, 0.1);
+    border: 2px solid rgba(255, 0, 0, 0.5);
+}
+
+.history-icon {
+    font-size: 1.5rem;
+}
+
+.history-symbols {
+    flex: 1;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+}
+
+.history-reward {
+    font-size: 1.2rem;
+    font-weight: 900;
+    min-width: 60px;
+    text-align: right;
+}
+
+.history-item.win .history-reward {
+    color: #0f0;
+}
+
+.history-item.small-win .history-reward {
+    color: gold;
+}
+
+.history-item.loss .history-reward {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.no-history {
+    text-align: center;
+    color: var(--neon-cyan);
+    opacity: 0.7;
+    padding: 2rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+    .slots-modal-content {
+        min-width: auto;
+        max-width: 90%;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+}
